@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leadership Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+            animation: fadeIn 1s ease-in;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .tagline {
+            font-size: 1.3em;
+            opacity: 0.95;
+            margin-bottom: 30px;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .nav-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-btn:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: slideUp 0.8s ease-out;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: #764ba2;
+            font-size: 1.5em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 25px;
+            border-radius: 15px;
+            color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .skill-card h4 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .experience-item {
+            background: #f8f9ff;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .experience-item:hover {
+            transform: translateX(5px);
+        }
+
+        .experience-title {
+            color: #667eea;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .experience-date {
+            color: #764ba2;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .achievement-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .achievement-list li {
+            padding: 15px;
+            margin-bottom: 10px;
+            background: #f8f9ff;
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-list li:hover {
+            background: #e8ebff;
+            transform: translateX(5px);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: scale(1.05);
+        }
+
+        .quote {
+            font-size: 1.3em;
+            font-style: italic;
+            color: #667eea;
+            text-align: center;
+            padding: 30px;
+            background: #f8f9ff;
+            border-radius: 10px;
+            margin: 30px 0;
+            border-left: 5px solid #764ba2;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .content {
+                padding: 25px;
+            }
+
+            .nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-btn {
+                width: 80%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Your Name</h1>
+            <p class="tagline">Empowering Teams | Driving Results | Leading Innovation</p>
+            <div class="nav">
+                <button class="nav-btn" onclick="showSection('about')">About</button>
+                <button class="nav-btn" onclick="showSection('skills')">Skills</button>
+                <button class="nav-btn" onclick="showSection('experience')">Experience</button>
+                <button class="nav-btn" onclick="showSection('achievements')">Achievements</button>
+                <button class="nav-btn" onclick="showSection('contact')">Contact</button>
+            </div>
+        </header>
+
+        <div class="content">
+            <div id="about" class="section active">
+                <h2>About Me</h2>
+                <p>Welcome! I'm a passionate leader dedicated to building high-performing teams and driving organizational success through strategic vision and collaborative management.</p>
+                
+                <div class="quote">
+                    "Leadership is not about being in charge. It's about taking care of those in your charge."
+                </div>
+
+                <p>With extensive experience in leadership and management, I specialize in transforming challenges into opportunities, fostering innovation, and creating environments where people thrive. My approach combines strategic thinking with empathetic leadership to achieve sustainable results.</p>
+
+                <h3>Leadership Philosophy</h3>
+                <p>I believe in servant leadership, where the success of the team is paramount. By empowering individuals, encouraging open communication, and leading by example, I create cultures of trust, accountability, and excellence.</p>
+            </div>
+
+            <div id="skills" class="section">
+                <h2>Leadership & Management Skills</h2>
+                
+                <div class="skill-grid">
+                    <div class="skill-card">
+                        <h4>Strategic Planning</h4>
+                        <p>Developing long-term vision and actionable strategies that align teams with organizational goals.</p>
+                    </div>
+                    <div class="skill-card">
+                        <h4>Team Building</h4>
+                        <p>Creating cohesive, high-performing teams through effective recruitment, development, and motivation.</p>
+                    </div>
+                    <div class="skill-card">
+                        <h4>Change Management</h4>
+                        <p>Leading organizations through transformation with clear communication and stakeholder engagement.</p>
+                    </div>
+                    <div class="skill-card">
+                        <h4>Performance Management</h4>
+                        <p>Setting clear expectations, providing feedback, and driving continuous improvement.</p>
+                    </div>
+                    <div class="skill-card">
+                        <h4>Conflict Resolution</h4>
+                        <p>Facilitating productive dialogue and finding win-win solutions to complex challenges.</p>
+                    </div>
+                    <div class="skill-card">
+                        <h4>Decision Making</h4>
+                        <p>Analyzing data, considering stakeholder input, and making confident, timely decisions.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="experience" class="section">
+                <h2>Professional Experience</h2>
+                
+                <div class="experience-item">
+                    <div class="experience-title">Senior Leadership Role</div>
+                    <div class="experience-date">2020 - Present</div>
+                    <p>Leading cross-functional teams to achieve strategic objectives. Implemented new management frameworks that increased team productivity by 40% and improved employee satisfaction scores.</p>
+                    <ul style="margin-top: 10px; margin-left: 20px;">
+                        <li>Managed team of 25+ professionals across multiple departments</li>
+                        <li>Developed and executed strategic initiatives resulting in 30% revenue growth</li>
+                        <li>Championed diversity and inclusion programs</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-title">Management Position</div>
+                    <div class="experience-date">2017 - 2020</div>
+                    <p>Built and mentored high-performing teams while driving operational excellence. Spearheaded digital transformation initiatives that modernized workflows and enhanced collaboration.</p>
+                    <ul style="margin-top: 10px; margin-left: 20px;">
+                        <li>Reduced operational costs by 25% through process optimization</li>
+                        <li>Implemented agile methodologies across the organization</li>
+                        <li>Cultivated a culture of innovation and continuous learning</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-title">Team Lead Role</div>
+                    <div class="experience-date">2014 - 2017</div>
+                    <p>Supervised day-to-day operations and developed emerging leaders. Created mentorship programs that accelerated professional development and improved retention.</p>
+                    <ul style="margin-top: 10px; margin-left: 20px;">
+                        <li>Coached 15+ team members to promotion-ready status</li>
+                        <li>Improved team efficiency by 35% through workflow redesign</li>
+                        <li>Established best practices adopted company-wide</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="achievements" class="section">
+                <h2>Key Achievements</h2>
+                
+                <ul class="achievement-list">
+                    <li><strong>Organizational Transformation:</strong> Led company-wide restructuring that improved efficiency, reduced costs, and increased employee engagement scores by 45%.</li>
+                    <li><strong>Revenue Growth:</strong> Developed and executed strategic plan resulting in 50% revenue increase over 3 years while maintaining profitability.</li>
+                    <li><strong>Team Development:</strong> Created comprehensive leadership development program that prepared 20+ managers for senior roles.</li>
+                    <li><strong>Innovation Initiative:</strong> Launched innovation lab that generated 15+ new product ideas, with 5 moving to market successfully.</li>
+                    <li><strong>Cultural Impact:</strong> Championed diversity and inclusion efforts, increasing workforce diversity by 60% and creating award-winning inclusive workplace.</li>
+                    <li><strong>Process Improvement:</strong> Implemented lean management principles reducing cycle time by 40% and improving quality metrics.</li>
+                    <li><strong>Stakeholder Relations:</strong> Built strategic partnerships with key stakeholders, resulting in expanded market reach and collaborative opportunities.</li>
+                </ul>
+            </div>
+
+            <div id="contact" class="section">
+                <h2>Get In Touch</h2>
+                <p>I'm always interested in connecting with fellow leaders, discussing opportunities, or sharing insights about leadership and management.</p>
+                
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <h3 style="margin: 0 0 10px 0;">Email</h3>
+                        <p>your.email@example.com</p>
+                    </div>
+                    <div class="contact-card">
+                        <h3 style="margin: 0 0 10px 0;">LinkedIn</h3>
+                        <p>linkedin.com/in/yourprofile</p>
+                    </div>
+                    <div class="contact-card">
+                        <h3 style="margin: 0 0 10px 0;">Location</h3>
+                        <p>Your City, State</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            document.getElementById(sectionId).classList.add('active');
+            
+            window.scrollTo({
+                top: document.querySelector('.content').offsetTop - 20,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
